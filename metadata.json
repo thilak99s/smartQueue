@@ -1,0 +1,8 @@
+{
+  "name": "SmartQueue",
+  "description": "Smart Queue & Appointment Management System with automatic queue recalculation and intelligent counter allocation.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
