@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#123b38">
+  <title>SmartQueue | Digital queue management</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#dashboard" aria-label="SmartQueue home">
+        <span class="brand-mark">SQ</span>
+        <span><strong>SmartQueue</strong><small>Queue intelligence</small></span>
+      </a>
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <button class="nav-link active" data-view="dashboard">Dashboard</button>
+        <button class="nav-link" data-view="appointment">Book appointment</button>
+        <button class="nav-link" data-view="analytics">Analytics</button>
+      </nav>
+      <div class="topbar-actions">
+        <button class="icon-button" id="notificationsButton" aria-label="Show notifications">◌<span class="notification-dot"></span></button>
+        <button class="role-switch" id="roleButton">User view <span>↔</span></button>
+      </div>
+    </header>
+
+    <main>
+      <section class="view active" id="dashboardView">
+        <div class="hero-row">
+          <div>
+            <p class="eyebrow">Monday, 24 August 2026</p>
+            <h1>Good morning, Alex.</h1>
+            <p class="hero-copy">Your next visit is moving smoothly. We will keep you posted as your place changes.</p>
+          </div>
+          <button class="outline-button" id="openSimulation">Run simulation <span>↗</span></button>
+        </div>
+
+        <div class="status-banner"><span class="pulse"></span><div><strong>Live queue is healthy</strong><p>Average wait time is down 18% across all service counters.</p></div><span class="banner-time">Updated now</span></div>
+
+        <div class="metric-grid">
+          <article class="metric-card metric-primary"><span class="metric-label">Your position</span><strong id="positionMetric">#04</strong><span class="metric-foot">of 18 visitors</span></article>
+          <article class="metric-card"><span class="metric-label">Estimated wait</span><strong id="waitMetric">12 min</strong><span class="metric-foot">Arrive by 10:18 AM</span></article>
+          <article class="metric-card"><span class="metric-label">Currently serving</span><strong id="servingMetric">A-218</strong><span class="metric-foot">Counter 02 · General</span></article>
+          <article class="metric-card"><span class="metric-label">Counters online</span><strong>08 <em>/ 09</em></strong><span class="metric-foot">One counter on break</span></article>
+        </div>
+
+        <div class="content-grid">
+          <section class="panel ticket-panel">
+            <div class="panel-heading"><div><p class="eyebrow">Active ticket</p><h2>Your place is reserved</h2></div><span class="live-chip">Live</span></div>
+            <div class="ticket-number"><span>Q</span><strong id="ticketNumber">042</strong><small>General enquiry</small></div>
+            <div class="progress-track"><span id="queueProgress"></span></div>
+            <div class="ticket-meta"><span><b id="aheadCount">3</b> people ahead</span><span>Checked in 9:42 AM</span></div>
+            <button class="primary-button" id="leaveQueue">Leave queue</button>
+          </section>
+          <section class="panel schedule-panel">
+            <div class="panel-heading"><div><p class="eyebrow">Next appointment</p><h2>Tomorrow, 11:30 AM</h2></div><span class="calendar-icon">▦</span></div>
+            <div class="appointment-detail"><span class="service-icon">✦</span><div><strong>Document verification</strong><p>Downtown service centre</p></div><span class="confirmed">Confirmed</span></div>
+            <div class="detail-line"><span>Reference</span><b>SQ-8492</b></div>
+            <button class="text-button" data-view="appointment">View appointment <span>→</span></button>
+          </section>
+        </div>
+
+        <section class="section-block"><div class="section-heading"><div><p class="eyebrow">Nearby services</p><h2>Find a faster counter</h2></div><button class="text-button">View all <span>→</span></button></div><div class="service-grid">
+          <button class="service-card" data-service="Licensing"><span class="service-icon peach">▣</span><strong>Licensing</strong><small>6 min wait · 2 counters</small><span>→</span></button>
+          <button class="service-card" data-service="Payments"><span class="service-icon aqua">◇</span><strong>Payments</strong><small>9 min wait · 3 counters</small><span>→</span></button>
+          <button class="service-card" data-service="General enquiry"><span class="service-icon mint">◎</span><strong>General enquiry</strong><small>12 min wait · 4 counters</small><span>→</span></button>
+        </div></section>
+      </section>
+
+      <section class="view" id="appointmentView"><div class="page-heading"><p class="eyebrow">Plan ahead</p><h1>Book an appointment</h1><p>Choose a service and a time that works for you.</p></div><div class="booking-layout"><form class="panel booking-form" id="bookingForm"><label>Service<select id="serviceSelect"><option>Document verification</option><option>Licensing</option><option>Payments</option><option>General enquiry</option></select></label><label>Date<input type="date" value="2026-08-25"></label><label>Time<select><option>11:30 AM</option><option>12:15 PM</option><option>1:00 PM</option><option>2:45 PM</option></select></label><button class="primary-button" type="submit">Confirm appointment <span>→</span></button></form><div class="booking-aside"><span class="aside-number">01</span><h2>Skip the waiting room.</h2><p>Reserve your place before you leave home, then arrive when your window opens.</p><div class="aside-rule"></div><p class="aside-note">Appointments are held for 10 minutes after the selected time.</p></div></div></section>
+
+      <section class="view" id="analyticsView"><div class="page-heading"><p class="eyebrow">Operations overview</p><h1>Queue analytics</h1><p>Live signals from today's service floor.</p></div><div class="analytics-grid"><div class="panel chart-panel"><div class="panel-heading"><div><h2>Average wait time</h2><p>Compared with last Monday</p></div><strong class="chart-value">12m <small>−18%</small></strong></div><div class="chart"><div class="chart-grid"></div><svg viewBox="0 0 620 220" role="img" aria-label="Wait time trending down"><polyline points="0,58 90,80 180,72 270,120 360,106 450,148 540,138 620,175" fill="none" stroke="#e77658" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="620" cy="175" r="7" fill="#123b38"/></svg></div><div class="chart-labels"><span>8 AM</span><span>10 AM</span><span>12 PM</span><span>2 PM</span><span>4 PM</span></div></div><div class="panel breakdown-panel"><div class="panel-heading"><div><h2>Service mix</h2><p>Visitors checked in</p></div><span class="donut">64%</span></div><div class="breakdown-list"><div><span class="legend-dot coral"></span><span>General enquiry</span><b>42%</b></div><div><span class="legend-dot teal"></span><span>Payments</span><b>28%</b></div><div><span class="legend-dot gold"></span><span>Licensing</span><b>18%</b></div><div><span class="legend-dot ink"></span><span>Other</span><b>12%</b></div></div></div></div></section>
+    </main>
+
+    <nav class="mobile-nav" aria-label="Mobile navigation"><button class="nav-link active" data-view="dashboard">⌂<span>Home</span></button><button class="nav-link" data-view="appointment">＋<span>Book</span></button><button class="nav-link" data-view="analytics">⌁<span>Stats</span></button></nav>
+    <div class="toast" id="toast" role="status"></div>
+    <dialog id="simulationDialog"><form method="dialog"><button class="dialog-close" aria-label="Close">×</button><p class="eyebrow">Queue simulator</p><h2>Model the service floor</h2><p>Adjust the flow and see your wait estimate respond.</p><label>Visitors joining<input id="visitorRange" type="range" min="1" max="12" value="4"><output id="visitorOutput">4 visitors</output></label><button class="primary-button" id="applySimulation" value="default">Apply changes</button></form></dialog>
+  </div>
+  <script src="./app.js"></script>
+</body>
+</html>
